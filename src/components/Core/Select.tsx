@@ -3,11 +3,16 @@ import React, { useEffect, useState } from 'react';
 type SelectProps = {
   defaultTag: string;
   label: string;
-  onReorder: (selectedTag: string) => void;
+  onOrderList: (selectedTag: string) => void;
   options: string[];
 };
 
-const Select = ({ defaultTag, label, onReorder, options }: SelectProps) => {
+const Select = ({
+  defaultTag,
+  label,
+  onOrderList,
+  options,
+}: SelectProps) => {
   const [selectedOption, setSelectedOption] = useState(defaultTag);
 
   const handleSelectChange = (event: any) => {
@@ -15,7 +20,7 @@ const Select = ({ defaultTag, label, onReorder, options }: SelectProps) => {
   };
 
   useEffect(() => {
-    onReorder(selectedOption);
+    onOrderList(selectedOption);
   }, [selectedOption]);
 
   return (

@@ -1,6 +1,6 @@
 import { InitialData } from '@/types/types';
 
-export const getInitialData: any = async () => {
+export const getInitialData = async (): Promise<InitialData> => {
   const res = await fetch('https://petstore.swagger.io/v2/swagger.json');
   const data = await res.json();
 

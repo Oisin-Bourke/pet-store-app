@@ -23,15 +23,14 @@ type HomeProps = {
 export default function Home({ data }: HomeProps) {
   const { info, paths, tags } = data;
   const [orderedPaths, setOrderedPaths] = useState(paths);
+  const tagOptions = tags.map(tag => tag.name);
 
-  const reorderListBySelected = (selectedTag: string) => {
-    const filteredBySelected = orderedPaths.filter(
-      path => path.tag === selectedTag,
-    );
-    const filteredByNotSelected = orderedPaths.filter(
+  const orderListByTag = (selectedTag: string) => {
+    const pathsSelected = orderedPaths.filter(path => path.tag === selectedTag);
+    const pathsNotSelected = orderedPaths.filter(
       path => path.tag !== selectedTag,
     );
-    const updatedPaths = [...filteredBySelected, ...filteredByNotSelected];
+    const updatedPaths = [...pathsSelected, ...pathsNotSelected];
     setOrderedPaths(updatedPaths);
   };
 
@@ -48,8 +47,8 @@ export default function Home({ data }: HomeProps) {
           <Select
             defaultTag={tags[0].name}
             label="Select a tag type:"
-            onReorder={reorderListBySelected}
-            options={tags.map(tag => tag.name)}
+            onOrderList={orderListByTag}
+            options={tagOptions}
           />
           <PetStore paths={orderedPaths} />
         </section>

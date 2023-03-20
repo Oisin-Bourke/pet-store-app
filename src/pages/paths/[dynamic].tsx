@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
 import PathItem from '@/components/Paths/PathItem';
-
 import { getInitialData } from '@/utils/api';
-
 import { Path } from '@/types/types';
 
 export const getStaticProps: GetStaticProps = async context => {
@@ -29,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: pathsWithParams,
-    fallback: false, // fallback to 404 if not found
+    fallback: 'blocking', // fallback to 404 if not found
   };
 };
 
