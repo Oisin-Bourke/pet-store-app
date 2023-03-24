@@ -14,6 +14,7 @@ npm run dev
 # 3) open http://localhost:3000
 
 # A) For an optimized build, run:
+npm install
 npm run build
 npm run start
 
